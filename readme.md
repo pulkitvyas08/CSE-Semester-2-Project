@@ -1,0 +1,1 @@
+# Final part in the project: SAR for Natural Calamities using Drones and Computer Vision
