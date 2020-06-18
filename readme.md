@@ -1,13 +1,41 @@
-# Final part of the project "SAR for Natural Calamities using Drones and Computer Vision"
+# Test part of the project "SAR using Drones and Computer Vision"
 
-Videos extracted based on ROI from the live video feed give a much accurate description of it but needs to be processed for final determination of victims.
-A layer of Human Action Recognition was applied on the extracted videos to further filter out false positives and inaccuracies in the preceding model the results from this stage are then sorted and fed into the next layer in the pipeline
 
-The results from the HAR layer are now being pre-processed for applying Human Pose Estimation algorithms
-Pre-processed data will be used to train state-of-the-art Human Pose Estimation (and, based on the need for more accuracy, action recognition) models and carry out determination of help and non-help scenarios
+Please refer to this [link] for all the background information and documentation about the project
 
-This entire AI pipline will then be deployed and installed on a Nvidia Jetson Nano board (or Raspberry Pi) on-board drone(s). Additionally a script will be written which will run the AI package and based on the final determination send the GPS coordinates of the location.
 
-To test the accuracy, efficiency and speed of the system a UI is being developed using java which will allow the user to view the live camera feed, real-time Object Detection results, results after the Human Pose Estimation layer and final determination. 
+## Comments on the current status of project
 
-Eventually the UI would be extended to be used in real-world situation where the user would be able to visualize the processing of individual drones and even swarms of drones (if possible by the internet conditions) and recieve the coordinates of locations where resue operations are needed to be done.
+This is the testing and evaluation part of our project. Initially we set out to complete all the objectives of the project and deploy for testing in a simulated environnment but due to the current coronavirus pandemic we were not able to procure the necessary equipment and also did not get the required computing power fo training the deep learning models on our custom dataset.
+To compensate for this we created sample tests and extended that concept to a framework-independent model and pipeline evaluation system.
+
+The AI pipeline for both the deployment approaches as well as the testing system is same on a broader sense of view.
+The major changes in the testing system is that instead of working on videos we use images for all the predictions. This was done because of compatibility issues between windows and darknet which made us switch to a ubuntu based development environment, the latest version of opencv are not compatible with ubuntu but are required by the darknet system.
+Before making the switch we evaluated both the pipeline approaches and did not find any significant performance difference.
+
+## System requirements
+
+- Ubuntu 18.04 (Highly recommended, setting up darknet on windows can be extremely difficult
+- 10-12 GB of disc space
+- CUDA enabled graphics card (recommended support is for CUDA 10 but system has been tested to work with CUDA 9 just fine)
+- At least 8GB of RAM 
+
+## Project setup
+
+Significant modifications have been made to the source code of all dependencies so it is required to compile the system with our files.
+
+### Download and rename as following: 
+
+- [Darknet-based-YOLOv4] rename to "Darknet-Module"
+- [RNN-for-HAR] rename to "HAR-Module"
+- [Human-Action-Classification] rename to "Human-AC-Module"
+- [tf-pose-estimation] rename to "TFPose-Module"
+
+Now replace all the contents of the respective folders from our codebase with the ones inside the above renamed folders
+Weight files and pre-trained models have to be downloaded from the above links as we cannot upload them here on github.
+
+[link]: https://drive.google.com/drive/folders/1Ew4jQ_kBSTqr5Jz5T4HBjAJNhmoa-C1b?usp=sharing
+[Darknet-based-YOLOv4]: https://github.com/AlexeyAB/darknet
+[RNN-for-HAR]: https://github.com/stuarteiffert/RNN-for-Human-Activity-Recognition-using-2D-Pose-Input
+[Human-Action-Classification]: https://github.com/dronefreak/human-action-classification
+[tf-pose-estimation]: https://github.com/ildoonet/tf-pose-estimation

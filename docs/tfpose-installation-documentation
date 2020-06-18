@@ -26,4 +26,16 @@ Important directions when following the instructions:
   - everything above is true but still the problem persists, change that line to: from tensorflow.python.compiler import trt_convert as trt 
   - Even the previous one doesn't solve the issue, if you find the solution please include it here
   
-2. 
+2. Cannot move to target thread. Segmentation fault (core dumped)
+Possible causes:
+  - Problems with opencv
+  - Problems with pyqt
+Solutions: 
+  - run: conda install pyqt
+  
+3. No inference in videos
+Possible causes: 
+  - run_video.py is buggy
+Solutions:
+  - put this in the while cap.isOpened() in the run_video.py file:
+        humans = e.inference(image, resize_to_default=True, upsample_size=4.0)
