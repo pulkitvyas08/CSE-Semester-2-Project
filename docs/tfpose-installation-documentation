@@ -1,0 +1,41 @@
+Required - Tensorflow GPU 1.14
+         - Cuda 9
+         - Cudnn 7
+         - Preferably ubuntu 18.04
+        
+Best way to install - 
+1. Make a virtual environment with python 3.6
+2. Make sure all nvidia drivers, cuda 9 and cudnn is set
+3. Follow the instructions on the github repository readme file:
+4. run this: pip install tensorflow-gpu==1.14 
+
+Important directions when following the instructions:
+ - No need to setup those c++ swig stuff
+ - do the installs from the requirements file as: python -m pip install -r requirements.txt
+ - do all installs with this: python -m pip install <package-name> (this will make sure that all the installs are done with the python version that is being used in the virtual environment)
+ - do not do ANY install using either pip install... or pip3 install... They might represent two different python versions which might even be different from the actual python version (3.6)
+ - before installing tensorflow do these: python -m pip install numpy
+ 
+ Common Errors and their possible solution: 
+ 1. ModuleNotFoundError: No module named 'tensorflow.contrib.tensorrt' was found
+ Possible causes: 
+  - You are running this on a windows machine and there is no tensorrt support for windows at the moment
+  - Ubuntu, You are not using tensorflow 1.14.0 or higher
+  - Ubuntu and tensorflow 1.14.0 or higher, Your cuda and cudnn are not configured correctly
+  - Ubuntu and tensorflow 1.14.0 or higher and everything setup correctly, python version is not the one that is recommended (3.6)
+  - everything above is true but still the problem persists, change that line to: from tensorflow.python.compiler import trt_convert as trt 
+  - Even the previous one doesn't solve the issue, if you find the solution please include it here
+  
+2. Cannot move to target thread. Segmentation fault (core dumped)
+Possible causes:
+  - Problems with opencv
+  - Problems with pyqt
+Solutions: 
+  - run: conda install pyqt
+  
+3. No inference in videos
+Possible causes: 
+  - run_video.py is buggy
+Solutions:
+  - put this in the while cap.isOpened() in the run_video.py file:
+        humans = e.inference(image, resize_to_default=True, upsample_size=4.0)
