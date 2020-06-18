@@ -1,7 +1,0 @@
-Inference - 
-
-Image: ./darknet detector test cfg/coco.data cfg/yolov4.cfg yolov4.weights data/image.jpg
-
-Video: ./darknet detector demo cfg/coco.data cfg/yolov4.cfg yolov4.weights data/video.mp4
-
-save video: ./darknet detector demo cfg/coco.data cfg/yolov4.cfg yolov4.weights test.mp4 -out_filename output.avi
