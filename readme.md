@@ -26,10 +26,10 @@ Significant modifications have been made to the source code of all dependencies 
 
 ### Download and rename as following: 
 
-- [Darknet-based-YOLOv4] rename to "Darknet-Module"
-- [RNN-for-HAR] rename to "HAR-Module"
-- [Human-Action-Classification] rename to "Human-AC-Module"
-- [tf-pose-estimation] rename to "TFPose-Module"
+- [Darknet-based-YOLOv4] rename to "Darknet_Module"
+- [RNN-for-HAR] rename to "HAR_Module"
+- [Human-Action-Classification] rename to "Human-AC_Module"
+- [tf-pose-estimation] rename to "TFPose_Module"
 
 Now replace all the contents of the respective folders from our codebase with the ones inside the above renamed folders
 Weight files and pre-trained models have to be downloaded from the above links as we cannot upload them here on github.
